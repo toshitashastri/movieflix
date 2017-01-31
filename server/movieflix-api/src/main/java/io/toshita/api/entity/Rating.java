@@ -2,10 +2,12 @@ package io.toshita.api.entity;
 
 import java.util.UUID;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 
 @Entity
 @NamedQueries({
@@ -14,9 +16,12 @@ import javax.persistence.NamedQuery;
 public class Rating {
 
 	@Id
+	@Column(name = "RATING_ID")
 	private String id;
 	private double rating;
+	@OneToOne
 	private User usr;
+	@OneToOne
 	private Movie mov;
 	
 	public Rating(){

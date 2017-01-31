@@ -1,6 +1,5 @@
 package io.toshita.api.entity;
 
-import java.util.Date;
 import java.util.UUID;
 
 import javax.persistence.Column;
@@ -8,46 +7,55 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 @Entity
+@Table
 @NamedQueries({
-	@NamedQuery(name="Movie.findAll", query="Select m from Movie m"),
+	@NamedQuery(name="Movie.findAll", query="SELECT m FROM Movie m"),
 	@NamedQuery(name="Movie.findByType", query="Select m from Movie m where m.type= :pType"),
 	@NamedQuery(name="Movie.findByYear", query="Select m from Movie m where m.year= :pYear"),
-	@NamedQuery(name="Movie.findByGenre", query="Select m from Movie m where m.genre= :pGenre"),
+	@NamedQuery(name="Movie.findByGenre", query="Select m from Movie m where m.genre= :pGenre and m.type= :pType"),
 	@NamedQuery(name="Movie.findByTitle", query="Select m from Movie m where m.title= :pTitle"),
 	@NamedQuery(name="Movie.sortByImdbRating", query="Select m from Movie m ORDER BY m.imdbRating DESC"),
 	@NamedQuery(name="Movie.sortByYear", query="Select m from Movie m ORDER BY m.year DESC"),
-	@NamedQuery(name="Movie.getTopRated", query="Select m from Movie m WHERE m.type = :mType AND m.imdbRating > :mRating"),
+	@NamedQuery(name="Movie.getTopRated", query="Select m from Movie m WHERE m.type = :mType ORDER BY m.imdbRating desc"),
 	@NamedQuery(name="Movie.sortByImdbVotes", query="Select m from Movie m ORDER BY m.imdbVotes DESC"),
 
 })
 public class Movie {
 
 	@Id
+	@Column(name="MOV_ID")
 	private String id;
 	
 	@Column(unique=true)
 	private String title;
 	
-	private String type;
-	private int year;
+	private String year;
+	private String rated;
+
+	private String released;
+	private String runtime;
 	private String genre;
-	private double imdbRating;
-	private long imdbVotes;
+
 	private String director;
+	private String writer;
 	private String actors;
 	private String plot;
-	private String imdbId;
-	private int metaScore;
-	private String poster;
-	private String awards;
-	private String country;
+
 	private String language;
-	private String writer;
-	private String runtime;
-	private Date released;
-	private String rated;
+
+	private String country;
+	private String awards;
+	private String poster;
+
+	private String metaScore;
+	
+	private String imdbRating;
+	private String imdbVotes;
+	private String imdbId;
+	private String type;
 	
 	public Movie(){
 		this.id=UUID.randomUUID().toString();
@@ -70,10 +78,10 @@ public class Movie {
 	public void setType(String type) {
 		this.type = type;
 	}
-	public int getYear() {
+	public String getYear() {
 		return year;
 	}
-	public void setYear(int year) {
+	public void setYear(String year) {
 		this.year = year;
 	}
 	public String getGenre() {
@@ -82,16 +90,16 @@ public class Movie {
 	public void setGenre(String genre) {
 		this.genre = genre;
 	}
-	public double getImdbRating() {
+	public String getImdbRating() {
 		return imdbRating;
 	}
-	public void setImdbRating(double imdbRating) {
+	public void setImdbRating(String imdbRating) {
 		this.imdbRating = imdbRating;
 	}
-	public long getImdbVotes() {
+	public String getImdbVotes() {
 		return imdbVotes;
 	}
-	public void setImdbVotes(long imdbVotes) {
+	public void setImdbVotes(String imdbVotes) {
 		this.imdbVotes = imdbVotes;
 	}
 	public String getDirector() {
@@ -118,10 +126,10 @@ public class Movie {
 	public void setImdbId(String imdbId) {
 		this.imdbId = imdbId;
 	}
-	public int getMetaScore() {
+	public String getMetaScore() {
 		return metaScore;
 	}
-	public void setMetaScore(int metaScore) {
+	public void setMetaScore(String metaScore) {
 		this.metaScore = metaScore;
 	}
 	public String getPoster() {
@@ -160,10 +168,10 @@ public class Movie {
 	public void setRuntime(String runtime) {
 		this.runtime = runtime;
 	}
-	public Date getReleased() {
+	public String getReleased() {
 		return released;
 	}
-	public void setReleased(Date released) {
+	public void setReleased(String released) {
 		this.released = released;
 	}
 	public String getRated() {

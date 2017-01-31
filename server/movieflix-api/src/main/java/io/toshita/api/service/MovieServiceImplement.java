@@ -2,6 +2,7 @@ package io.toshita.api.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,6 +14,7 @@ import io.toshita.api.repository.MovieRepository;
 @Service
 public class MovieServiceImplement implements MovieService {
 
+	@Autowired
 	private MovieRepository repository;
 	
 	@Override
@@ -34,7 +36,7 @@ public class MovieServiceImplement implements MovieService {
 	
 	@Override
 	@Transactional(readOnly=true)
-	public List<Movie> findByYear(int year) {
+	public List<Movie> findByYear(String year) {
 		
 		List<Movie> current =repository.findByYear(year);
 		if(current!=null){
@@ -45,8 +47,8 @@ public class MovieServiceImplement implements MovieService {
 	
 	@Override
 	@Transactional(readOnly=true)
-	public List<Movie> findByGenre( String genre) {
-		List<Movie> current =repository.findByGenre(genre);
+	public List<Movie> findByGenre(String type, String genre) {
+		List<Movie> current =repository.findByGenre(type, genre);
 		if(current!=null){
 			throw new EntityNotFoundException("Entity not found");
 		}
@@ -98,30 +100,35 @@ public class MovieServiceImplement implements MovieService {
 	}
 
 	@Override
+	@Transactional(readOnly=true)
 	public List<Movie> sortByImdbRating() {
 		
 		return repository.sortByImdbRating();
 	}
 
 	@Override
+	@Transactional(readOnly=true)
 	public List<Movie> sortByYear() {
 		return repository.sortByYear();
 	}
 
 	@Override
+	@Transactional(readOnly=true)
 	public List<Movie> sortByImdbVotes() {
 		return repository.sortByImdbVotes();
 	}
 
 	@Override
-	public List<Movie> getTopRatedMovies() {
-		return repository.getTopRatedMovies();
+	@Transactional(readOnly=true)
+	public List<Movie> getTopRatedMovies(String type) {
+		List<Movie> current =repository.getTopRatedMovies(type);
+		if(current!=null){
+			throw new EntityNotFoundException("Entity not found");
+		}
+		return current;
+		 
 	}
 
-	@Override
-	public List<Movie> getTopRatedSeries() {
-		return repository.getTopRatedSeries();
-	}
 
 	@Override
 	@Transactional(readOnly=true)

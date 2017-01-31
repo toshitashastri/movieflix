@@ -23,48 +23,45 @@ public class MovieController {
 	public List<Movie> findAll(){
 		return service.findAll();
 	}
-	
-	@RequestMapping(method = RequestMethod.GET, value = "/{type}")
+	//not working
+	@RequestMapping(method = RequestMethod.GET, value = "findByType/{type}")
 	public List<Movie> findByType(@PathVariable("type") String type){
 		return service.findByType(type);
 	}
-	
-	@RequestMapping(method = RequestMethod.GET, value = "/{year}")
-	public List<Movie> findByYear(@PathVariable("year") int year){
+	//not working
+	@RequestMapping(method = RequestMethod.GET, value = "findByYear/{year}")
+	public List<Movie> findByYear(@PathVariable("year") String year){
 		return service.findByYear(year);
 	}
-	
-	@RequestMapping(method = RequestMethod.GET, value = "/{genre}")
-	public List<Movie> findByGenre(@PathVariable("genre") String genre){
-		return service.findByGenre(genre);
+	//not working
+	@RequestMapping(method = RequestMethod.GET, value = "{type}/findByGenre/{genre}")
+	public List<Movie> findByGenre(@PathVariable("type") String type, @PathVariable("genre") String genre){
+		return service.findByGenre(type, genre);
 	}
-	@RequestMapping(method = RequestMethod.GET, value = "/{imdbRating}")
+	@RequestMapping(method = RequestMethod.GET, value = "/sortByImdbRating")
 	public List<Movie> sortByImdbRating() {
 		return service.sortByImdbRating();
 	}
-	@RequestMapping(method = RequestMethod.GET, value = "/{year}")
+	@RequestMapping(method = RequestMethod.GET, value= "movie/sortByYear")
 	public List<Movie> sortByYear() {
 		return service.sortByYear();
 	}
-	@RequestMapping(method = RequestMethod.GET, value = "/{imdbVotes}")
+	@RequestMapping(method = RequestMethod.GET, value = "/sortByVotes")
 	public List<Movie> sortByImdbVotes(){
 		return service.sortByImdbVotes();
 	}
-	@RequestMapping(method=RequestMethod.GET, value="/{topRatedMovies}")
-	public List<Movie> getTopRatedMovies() {
-		return service.getTopRatedMovies();
+	//not working
+	@RequestMapping(method=RequestMethod.GET, value="/getTopRated/{type}")
+	public List<Movie> getTopRatedMovies(@PathVariable("type") String type) {
+		return service.getTopRatedMovies(type);
 	}
 	
-	@RequestMapping(method=RequestMethod.GET, value="/{topRatedSeries}" )
-	public List<Movie> getTopRatedSeries() {
-		return service.getTopRatedSeries();
-	}
-	@RequestMapping(method = RequestMethod.GET, value="/{id}")
+	@RequestMapping(method = RequestMethod.GET, value="{id}")
 	public Movie findOne(@PathVariable("id") String id){
 		return service.findOne(id);
 	}
 	
-	@RequestMapping(method = RequestMethod.GET, value="/{title}")
+	@RequestMapping(method = RequestMethod.GET, value="movie/{title}")
 	public Movie findByTitle(@PathVariable("title") String title){
 		return service.findByTitle(title);
 	}

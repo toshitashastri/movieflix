@@ -7,8 +7,8 @@ import io.toshita.api.entity.Movie;
 public interface MovieRepository {
 	public List<Movie> findAll();
 	public  List<Movie> findByType(String type);
-	public  List<Movie> findByYear(int year);
-	public  List<Movie> findByGenre(String genre);
+	public  List<Movie> findByYear(String year);
+	public  List<Movie> findByGenre(String type, String genre);
 	public Movie findOne(String id);
 	public Movie create(Movie mov);
 	public Movie update(Movie mov);
@@ -17,6 +17,5 @@ public interface MovieRepository {
 	public List<Movie> sortByImdbRating();
 	public  List<Movie> sortByYear();
 	public  List<Movie> sortByImdbVotes();
-	public  List<Movie> getTopRatedMovies();
-	public  List<Movie> getTopRatedSeries();
+	public  List<Movie> getTopRatedMovies(String type);
 }

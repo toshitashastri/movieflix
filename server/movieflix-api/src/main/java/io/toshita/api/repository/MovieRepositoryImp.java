@@ -27,35 +27,26 @@ public class MovieRepositoryImp implements MovieRepository {
 		TypedQuery<Movie> query = em.createNamedQuery("Movie.findByType", Movie.class);
 		query.setParameter("pType", type);
 		List<Movie> movies = query.getResultList();
-		if(movies!=null && movies.size()==1){
 			return movies;
-		}
-		else
-			return null;
+	
 	}
 
 	@Override
-	public  List<Movie> findByYear(int year) {	
+	public  List<Movie> findByYear(String year) {	
 		TypedQuery<Movie> query = em.createNamedQuery("Movie.findByYear", Movie.class);
 		query.setParameter("pYear", year);
 		List<Movie> movies = query.getResultList();
-		if(movies!=null && movies.size()==1){
 			return movies;
-		}
-		else
-			return null;
 	}
 
 	@Override
-	public  List<Movie> findByGenre(String genre) {
+	public  List<Movie> findByGenre(String type, String genre) {
 		TypedQuery<Movie> query = em.createNamedQuery("Movie.findByGenre", Movie.class);
+		query.setParameter("pType", type);
 		query.setParameter("pGenre", genre);
 		List<Movie> movies = query.getResultList();
-		if(movies!=null && movies.size()==1){
 			return movies;
-		}
-		else
-			return null;
+		
 	}
 
 	@Override
@@ -98,59 +89,31 @@ public class MovieRepositoryImp implements MovieRepository {
 	public List<Movie> sortByImdbRating() {
 		TypedQuery<Movie> query = em.createNamedQuery("Movie.sortByImdbRating", Movie.class);
 		List<Movie> movies = query.getResultList();
-		if(movies!=null && movies.size()==1){
-			return movies;
-		}
-		else
-			return null;
+		return movies;
 	}
 
 	@Override
 	public List<Movie> sortByYear() {
 		TypedQuery<Movie> query = em.createNamedQuery("Movie.sortByYear", Movie.class);
 		List<Movie> movies = query.getResultList();
-		if(movies!=null && movies.size()==1){
 			return movies;
-		}
-		else
-			return null;
 	}
 
 	@Override
 	public List<Movie> sortByImdbVotes() {
 		TypedQuery<Movie> query = em.createNamedQuery("Movie.sortByImdbVotes", Movie.class);
 		List<Movie> movies = query.getResultList();
-		if(movies!=null && movies.size()==1){
 			return movies;
-		}
-		else
-			return null;
+		
 	}
 
 	@Override
-	public List<Movie> getTopRatedMovies() {
+	public List<Movie> getTopRatedMovies(String type) {
 		TypedQuery<Movie> query = em.createNamedQuery("Movie.getTopRated", Movie.class);
-		query.setParameter("mType", "movie");
-		query.setParameter("mRating", 8.3f);
+		query.setParameter("mType", type);
 		List<Movie> movies = query.getResultList();
-		if(movies!=null && movies.size()==1){
 			return movies;
-		}
-		else
-			return null;
 	}
 
-	@Override
-	public List<Movie> getTopRatedSeries() {
-		TypedQuery<Movie> query = em.createNamedQuery("Movie.getTopRated", Movie.class);
-		query.setParameter("mType", "series");
-		query.setParameter("mRating", 8.3f);
-		List<Movie> movies = query.getResultList();
-		if(movies!=null && movies.size()==1){
-			return movies;
-		}
-		else
-			return null;
-	}
-
+	
 }

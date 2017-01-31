@@ -16,6 +16,7 @@ import javax.persistence.NamedQuery;
 public class User {
 
 	@Id
+	@Column(name = "USR_ID")
 	private String id;
 	private String firstName;
 	private String lastName;
