@@ -3,7 +3,6 @@ package io.toshita.api.service;
 import java.util.List;
 
 import io.toshita.api.entity.User;
-
 public interface UserService {
 
 	public List<User> findAll();

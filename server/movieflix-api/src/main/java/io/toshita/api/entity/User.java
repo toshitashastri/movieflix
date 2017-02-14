@@ -1,5 +1,6 @@
 package io.toshita.api.entity;
 
+
 import java.util.UUID;
 
 import javax.persistence.Column;

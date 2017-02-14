@@ -1,7 +1,6 @@
 package io.toshita.api.service;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,34 +24,31 @@ public class MovieServiceImplement implements MovieService {
 
 	@Override
 	@Transactional(readOnly=true)
-	public List<Movie> findByType(String type) {
+	public List<Movie> findByTypeMovie() {
 
-		List<Movie> current =repository.findByType(type);
-		if(current!=null){
-			throw new EntityNotFoundException("Entity not found");
-		}
-		return current;
+		return repository.findByTypeMovie();
+		
 	}
-	
+	@Override
+	@Transactional(readOnly=true)
+	public List<Movie> findByTypeSeries() {
+
+		return repository.findByTypeSeries();
+		
+	}
 	@Override
 	@Transactional(readOnly=true)
 	public List<Movie> findByYear(String year) {
 		
-		List<Movie> current =repository.findByYear(year);
-		if(current!=null){
-			throw new EntityNotFoundException("Entity not found");
-		}
-		return current;
+		return repository.findByYear(year);
+		
+		
 	}
 	
 	@Override
 	@Transactional(readOnly=true)
 	public List<Movie> findByGenre(String type, String genre) {
-		List<Movie> current =repository.findByGenre(type, genre);
-		if(current!=null){
-			throw new EntityNotFoundException("Entity not found");
-		}
-		return current;
+		return repository.findByGenre(type, genre);
 	}
 
 	@Override
@@ -122,7 +118,7 @@ public class MovieServiceImplement implements MovieService {
 	@Transactional(readOnly=true)
 	public List<Movie> getTopRatedMovies(String type) {
 		List<Movie> current =repository.getTopRatedMovies(type);
-		if(current!=null){
+		if(current==null){
 			throw new EntityNotFoundException("Entity not found");
 		}
 		return current;

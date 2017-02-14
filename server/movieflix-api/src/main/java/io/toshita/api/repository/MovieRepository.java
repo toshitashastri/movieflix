@@ -6,7 +6,8 @@ import io.toshita.api.entity.Movie;
 
 public interface MovieRepository {
 	public List<Movie> findAll();
-	public  List<Movie> findByType(String type);
+	public  List<Movie> findByTypeMovie();
+	public  List<Movie> findByTypeSeries();
 	public  List<Movie> findByYear(String year);
 	public  List<Movie> findByGenre(String type, String genre);
 	public Movie findOne(String id);

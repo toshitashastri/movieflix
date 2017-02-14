@@ -23,17 +23,22 @@ public class MovieController {
 	public List<Movie> findAll(){
 		return service.findAll();
 	}
-	//not working
-	@RequestMapping(method = RequestMethod.GET, value = "findByType/{type}")
-	public List<Movie> findByType(@PathVariable("type") String type){
-		return service.findByType(type);
+	
+	@RequestMapping(method = RequestMethod.GET, value = "/findByTypeMovie")
+	public List<Movie> findByTypeMovie(){
+		return service.findByTypeMovie();
 	}
-	//not working
+	
+	@RequestMapping(method = RequestMethod.GET, value = "/findByTypeSeries")
+	public List<Movie> findByTypeSeries(){
+		return service.findByTypeSeries();
+	}
+	
 	@RequestMapping(method = RequestMethod.GET, value = "findByYear/{year}")
 	public List<Movie> findByYear(@PathVariable("year") String year){
 		return service.findByYear(year);
 	}
-	//not working
+	
 	@RequestMapping(method = RequestMethod.GET, value = "{type}/findByGenre/{genre}")
 	public List<Movie> findByGenre(@PathVariable("type") String type, @PathVariable("genre") String genre){
 		return service.findByGenre(type, genre);
@@ -50,7 +55,7 @@ public class MovieController {
 	public List<Movie> sortByImdbVotes(){
 		return service.sortByImdbVotes();
 	}
-	//not working
+	
 	@RequestMapping(method=RequestMethod.GET, value="/getTopRated/{type}")
 	public List<Movie> getTopRatedMovies(@PathVariable("type") String type) {
 		return service.getTopRatedMovies(type);

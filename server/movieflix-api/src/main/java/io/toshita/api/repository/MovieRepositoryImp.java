@@ -23,11 +23,15 @@ public class MovieRepositoryImp implements MovieRepository {
 	}
 
 	@Override
-	public  List<Movie> findByType(String type) {
-		TypedQuery<Movie> query = em.createNamedQuery("Movie.findByType", Movie.class);
-		query.setParameter("pType", type);
-		List<Movie> movies = query.getResultList();
-			return movies;
+	public  List<Movie> findByTypeMovie() {
+		TypedQuery<Movie> query = em.createNamedQuery("Movie.findByTypeMovie", Movie.class);
+		return query.getResultList();
+	
+	}
+	@Override
+	public  List<Movie> findByTypeSeries() {
+		TypedQuery<Movie> query = em.createNamedQuery("Movie.findByTypeSeries", Movie.class);
+		return query.getResultList();
 	
 	}
 
@@ -35,15 +39,15 @@ public class MovieRepositoryImp implements MovieRepository {
 	public  List<Movie> findByYear(String year) {	
 		TypedQuery<Movie> query = em.createNamedQuery("Movie.findByYear", Movie.class);
 		query.setParameter("pYear", year);
-		List<Movie> movies = query.getResultList();
-			return movies;
+		return query.getResultList();
+			
 	}
 
 	@Override
 	public  List<Movie> findByGenre(String type, String genre) {
 		TypedQuery<Movie> query = em.createNamedQuery("Movie.findByGenre", Movie.class);
 		query.setParameter("pType", type);
-		query.setParameter("pGenre", genre);
+		query.setParameter("pGenre","%"+ genre+"%");
 		List<Movie> movies = query.getResultList();
 			return movies;
 		
