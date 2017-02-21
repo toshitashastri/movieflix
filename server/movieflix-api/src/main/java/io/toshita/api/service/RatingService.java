@@ -13,4 +13,6 @@ public interface RatingService {
 	public Rating create(Rating rt);
 	
 	public void delete(String id);
+	
+	public double findRating( String movId);
 }

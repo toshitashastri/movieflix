@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import io.toshita.api.entity.Comment;
+import io.toshita.api.entity.Movie;
 import io.toshita.api.exception.EntityNotFoundException;
 import io.toshita.api.repository.CommentRepository;
 
@@ -15,13 +16,15 @@ public class CommentServiceImplement implements CommentService {
 
 	@Autowired
 	private CommentRepository repository;
+	@Autowired
+	private MovieService movieService;
 	
 	@Override
 	@Transactional(readOnly=true)
 	public List<Comment> findAll() {
 		return repository.findAll();
 	}
-
+	
 	@Override
 	@Transactional(readOnly=true)
 	public Comment findOne(String id) {
@@ -31,11 +34,23 @@ public class CommentServiceImplement implements CommentService {
 		}
 		return cmt;
 	}
+	
+	@Override
+	@Transactional(readOnly=true)
+	public List<Comment> findById(String movieId) {
+		
+		return repository.findById(movieId);
+	}
 
 	@Override
 	@Transactional
-	public Comment create(Comment cmt) {
-		return repository.create(cmt);
+	public Comment create(String movieId, String comment) {
+		Movie movie = movieService.findOne(movieId);
+	Comment cmt = new Comment();
+	cmt.setMov(movie);
+	cmt.setComment(comment);
+	return repository.create(cmt);
+		
 	}
 
 	@Override

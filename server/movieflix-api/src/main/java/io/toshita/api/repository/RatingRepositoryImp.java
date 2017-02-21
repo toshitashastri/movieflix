@@ -39,4 +39,12 @@ public class RatingRepositoryImp implements RatingRepository {
 
 	}
 
+	@Override
+	public double findRating( String movId) {
+		TypedQuery<Double> query = em.createNamedQuery("Rating.findRating", Double.class);
+		query.setParameter("rMovie", movId);
+		return query.getSingleResult();
+
+	}
+
 }

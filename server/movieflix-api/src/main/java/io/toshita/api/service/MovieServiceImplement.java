@@ -47,8 +47,8 @@ public class MovieServiceImplement implements MovieService {
 	
 	@Override
 	@Transactional(readOnly=true)
-	public List<Movie> findByGenre(String type, String genre) {
-		return repository.findByGenre(type, genre);
+	public List<Movie> findByGenre(String genre) {
+		return repository.findByGenre( genre);
 	}
 
 	@Override
@@ -66,7 +66,7 @@ public class MovieServiceImplement implements MovieService {
 	@Transactional
 	public Movie create(Movie mov) {
 
-		Movie current=repository.findByTitle(mov.getTitle());
+		List<Movie> current=repository.findByTitle(mov.getTitle());
 		if(current!=null){
 			throw new BadRequestException("Entity with this title already exists");
 		}
@@ -128,9 +128,9 @@ public class MovieServiceImplement implements MovieService {
 
 	@Override
 	@Transactional(readOnly=true)
-	public Movie findByTitle(String title) {
+	public List<Movie> findByTitle(String title) {
 
-		Movie mov= repository.findByTitle(title);
+		List<Movie> mov= repository.findByTitle(title);
 		if(mov==null){
 			throw new EntityNotFoundException("Entity with this title does not exist");
 		}

@@ -1,0 +1,91 @@
+<div class="head">
+    <header>
+    <img src="../../logo.png">
+
+    </header>
+</div>
+<section>
+    <nav>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sort by&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <select [(ngModel)]="selectedValue" name="Sort" class ="filter" (change)="onChange(selectedValue)">
+            <option value="" selected hidden disabled>Select</option>
+            <option value="imdbRatings">imdb Ratings</option>
+            <option value="sortyear">Year</option>
+            <option value="imdbVotes">imdb Votes</option>
+        </select>
+
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        Filters:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TYPE
+        <select name="type" class="filter" [(ngModel)]="filterValue" (change)="filterChange(filterValue)">
+
+            <option value="" selected disabled hidden>Type</option>
+            <option value="movie">Movies</option>
+            <option value="series">Series</option>
+        </select>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Year
+        <select name="year" class="filter" [(ngModel)]="yearValue" (change)="yearChange(yearValue)">
+
+            <option *ngFor="let year of years()" [value]="year">{{year}}</option>
+        </select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Genre
+
+        <select name="genre" class="filter " [(ngModel)]="genreValue" (change)="genreChange(genreValue)">
+
+            <option value="" selected disabled hidden>Genre</option>
+            <option value="Action">Action</option>
+            <option value="Crime">Crime</option>
+            <option value="Drama">Drama</option>
+            <option value="Comedy">Comedy</option>
+            <option value="Sci-Fi">Sci-Fi</option>
+            <option value="Thriller">Thriller</option>
+            <option value="Mystery">Mystery</option>
+            <option value="Fantasy">Fantasy</option>
+            <option value="Adventure">Adventure</option>
+            <option value="Biography">Biography</option>
+            <option value="History">History</option>
+            <option value="Romance">Romance</option>
+            <option value="Western">Western</option>
+        </select>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input name="title" type="text" placeholder="Search by title name" class="text" #title (keyup.enter)="titleEnter(title.value)">
+        <span class="username"> Welcome:&nbsp; {{user.firstName}}&nbsp; {{user.lastName}}&nbsp;
+            <input id="logout" type="button" name="logout" value="logout" (click)="logout()"></span>
+<input id="create" type="button" name="create" [hidden]="this.user.role=='user'" value="Create new" (click)="new()">
+
+
+    </nav>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th></th>
+            <th>Title</th>
+            <th>Year</th>
+            <th>Genre</th>
+            <th>Type</th>
+            <th>imdbRating</th>
+            <th>imdbVotes</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let movie of movieList">
+            <td><a [routerLink]="[movie.id]"><img [src]="movie.poster"></a></td>
+            <td>{{movie.title}}</td>
+            <td>{{movie.year}}</td>
+            <td>{{movie.genre}}</td>
+            <td>{{movie.type}}</td>
+            <td>{{movie.imdbRating}}</td>
+            <td>{{movie.imdbVotes}}</td>
+
+        </tr>
+        </tbody>
+    </table>
+
+</section>
+<footer>
+    <p>
+        <a href="../contact">CONTACT US</a> &nbsp; | &nbsp; Privacy Statement &nbsp; | &nbsp; Copyright @ 2017 Toshita Shastri
+
+    </p>
+</footer>
+
+<router-outlet></router-outlet>

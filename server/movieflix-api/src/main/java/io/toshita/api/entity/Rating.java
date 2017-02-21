@@ -6,13 +6,15 @@ import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
 
 @Entity
 @NamedQueries({
-	@NamedQuery(name="Rating.findAll", query="Select r from Rating r")
+	@NamedQuery(name="Rating.findAll", query="Select r from Rating r"),
+	@NamedQuery(name="Rating.findRate", query="Select avg(r.rating) from Rating r INNER JOIN r.mov m where m.id= :rMovie")
 })
 public class Rating {
 
@@ -20,9 +22,9 @@ public class Rating {
 	@Column(name = "RATING_ID")
 	private String id;
 	private double rating;
-	@OneToOne
+	@ManyToOne
 	private User usr;
-	@OneToOne
+	@ManyToOne
 	private Movie mov;
 	
 	public Rating(){

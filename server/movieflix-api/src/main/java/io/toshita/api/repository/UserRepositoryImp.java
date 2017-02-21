@@ -38,6 +38,7 @@ public class UserRepositoryImp implements UserRepository {
 		}
 		else
 			return null;
+		
 	}
 
 	@Override
@@ -56,6 +57,19 @@ public class UserRepositoryImp implements UserRepository {
 
 		em.remove(usr);
 
+	}
+
+	@Override
+	public User auth(String email, String password) {
+		TypedQuery<User> query = em.createNamedQuery("User.auth", User.class);
+		query.setParameter("pEmail", email);
+		query.setParameter("pPassword", password);
+		List<User> users = query.getResultList();
+		if(users!=null && users.size()==1){
+			return users.get(0);
+		}
+		else
+			return null;
 	}
 
 }

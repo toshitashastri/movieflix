@@ -21,10 +21,18 @@ public class CommentRepositoryImp implements CommentRepository {
 		TypedQuery<Comment> query = em.createNamedQuery("Comment.findAll", Comment.class);
 		return query.getResultList();
 	}
-
 	@Override
 	public Comment findOne(String id) {
 		return em.find(Comment.class, id);
+		}
+	@Override
+	public List<Comment> findById(String movieId) {
+		TypedQuery<Comment> query = em.createNamedQuery("Comment.findByMovieId", Comment.class);
+		query.setParameter("pmovieId", movieId);
+		List<Comment> reviews = query.getResultList();
+		
+			return reviews;
+		
 		}
 
 	@Override

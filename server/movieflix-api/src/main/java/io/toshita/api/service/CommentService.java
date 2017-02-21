@@ -9,9 +9,9 @@ public interface CommentService {
 
 	public List<Comment> findAll();
 	
-	public Comment findOne(String id);
-		
-	public Comment create(Comment cmt);
+	public List<Comment> findById(String movieId);
+	public Comment findOne(String id);	
+	public Comment create(String movieId, String comment);
 	
 	public void delete( String id);
 }

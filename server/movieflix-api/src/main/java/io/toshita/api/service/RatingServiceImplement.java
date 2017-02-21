@@ -49,4 +49,11 @@ public class RatingServiceImplement implements RatingService {
 		
 	}
 
+	@Override
+	@Transactional(readOnly=true)
+	public double findRating( String movId) {
+		return repository.findRating(movId);
+		
+	}
+
 }

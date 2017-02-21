@@ -63,4 +63,25 @@ public class UserServiceImplement implements UserService {
 		repository.delete(current);
 	}
 
+	@Override
+	@Transactional(readOnly=true)
+	public User findByEmail(String email) {
+		User usr=repository.findByEmail(email);
+		if(usr==null){
+			throw new EntityNotFoundException(" User not found ");
+		}
+		return usr;
+	}
+
+	@Override
+	@Transactional(readOnly=true)
+	public Boolean auth(String email, String password) {
+		User usr=repository.auth(email, password);
+		if(usr==null){
+			return false;
+		}
+		else
+			return true;
+	}
+
 }

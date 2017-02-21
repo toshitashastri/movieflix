@@ -1,0 +1,66 @@
+<div class="head">
+    <header>
+        <img src="../../logo.png">
+
+    </header>
+</div>
+<nav>
+<a [routerLink]="['../']" class="btn btn-primary" xmlns="http://www.w3.org/1999/html"
+                        xmlns="http://www.w3.org/1999/html">&lt; Back</a>
+</nav>
+<div class="row details">
+    <div class="col-sm-4 poster">
+        <img [src]="movie.poster" *ngIf="movie.poster" class="img-responsive">
+    </div>
+    <div class="col-sm-8 moviedetails">
+        <br>
+        <h2>{{movie.title}} ({{movie.year}})</h2>
+        <p><strong>{{movie.genre}}</strong></p>
+        <p>{{movie.rated}} &nbsp;&nbsp; | &nbsp;&nbsp; {{movie.runtime}} |&nbsp;&nbsp; {{movie.language}} |&nbsp;&nbsp; {{movie.type}}</p>
+        <p><strong>Released: &nbsp;&nbsp;  </strong> {{movie.released}} ({{movie.country}})</p>
+
+
+        <p><strong>Director: &nbsp;&nbsp;</strong> {{movie.director}}</p>
+        <p><strong>Writer: &nbsp;&nbsp;</strong>{{movie.writer}}</p>
+        <p><strong> Actors: &nbsp;&nbsp; </strong>{{movie.actors}}</p>
+        <p>{{movie.plot}}</p>
+        <p>Awards{{movie.awards}}</p>
+        <p>Metascore: <strong>{{movie.metaScore}}</strong>/100 &nbsp;&nbsp; | &nbsp;&nbsp; imdbRating: <strong>{{movie.imdbRating}}</strong></p>
+        <p>imdbVotes: <strong>{{movie.imdbVotes}}</strong> &nbsp;&nbsp; | &nbsp;&nbsp; <strong><a href="http://www.imdb.com/title/{{movie.imdbId}}">IMDb</a></strong></p>
+        <div class="rating">
+            <span (click)="rating(5,movie.id)">☆</span>
+            <span (click)="rating(4,movie.id)">☆</span>
+            <span (click)="rating(3,movie.id)">☆</span>
+            <span (click)="rating(2,movie.id)">☆</span>
+            <span (click)="rating(1,movie.id)">☆</span>5/{{rating.avg}}
+        </div>
+    </div>
+</div>
+
+<div class="reviews">
+    <div class="title">
+        User Reviews:
+    </div>
+    <br>
+    <div class="comments">
+        <ul class="list" *ngFor="let comment of commentList">
+            <i class="fa fa-user-circle-o" style="font-size:36px;color:red"></i><p>{{comment.comment}}</p>
+        </ul>
+    </div>
+</div>
+<div class="detailBox">
+
+    <form  novalidate #commentForm="ngForm" (ngSubmit)="addComment(comment.value,movie.id)">
+        <div class="form-group" >
+            <textarea  name="comment" id="comment" [(ngModel)]="comment.value" placeholder="Enter your review." #comment required minlength="5" class="form-control"></textarea>
+
+            <input type="submit" name="add" id="add" value="Review" [disabled]="commentForm.form.invalid" >
+        </div>
+    </form>
+</div>
+<footer>
+    <p>
+        <a href="../contact">CONTACT US</a> &nbsp; | &nbsp; Privacy Statement &nbsp; | &nbsp; Copyright @ 2017 Toshita Shastri
+
+    </p>
+</footer>

@@ -1,0 +1,51 @@
+<div class="head">
+    <header>
+        <img src="../../logo.png">
+        <form class="logform" >
+            <label>User Name
+                <input id="loginEmail" name="email" type="email" placeholder="Enter valid email" [(ngModel)]="loginUser.loginEmail"></label>
+            <label>Password
+            <input name="password" type="password" placeholder="Enter Password" [(ngModel)]="loginUser.loginPwd"></label>
+
+            <input id="submit" name="submit" type="submit" value="login" (click)="login($event)">
+        </form>
+
+    </header>
+</div>
+<div class="quote">Every Great Film<br>
+    should seem new<br>
+    Every Time you See it<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;- ROGER EBERT</div>
+
+<div>
+
+    <section>
+
+        <div id="regform">
+            <form (ngSubmit)="addUser()" >
+
+                <input #firstName="ngModel" name="firstName"  type="text" placeholder="First Name" [(ngModel)]="user.firstName" required minlength="4"/>
+
+                <input name="lastName"  type="text" placeholder="Last Name" [(ngModel)]="user.lastName" required required minlength="4"/>
+                <input name="validEmail"  type="email" placeholder="Email" [(ngModel)]="user.email" required/>
+                <input id="password" name="password" type="password" placeholder="Password" [(ngModel)]="user.password" required />
+                <input  #confirmPassword="ngModel" id="confirmPassword" name="confirmPassword"  type="password" placeholder="Confirm Password" (keyup)="onKey(confirmPassword.value)" [(ngModel)]="values" required />
+                <div class="errors" *ngIf="!valid">Mismatch password</div>
+                <button id="register"  name="register" type="submit" [disabled]="!valid" >REGISTER</button>
+
+            </form>
+
+        </div>
+
+
+    </section>
+
+</div>
+
+<footer>
+    <p>
+        <strong> <a href="../contact">CONTACT US</a> &nbsp; | &nbsp; Privacy Statement &nbsp; | &nbsp; Copyright @ 2017 Toshita Shastri
+        </strong>
+    </p>
+</footer>
+<router-outlet></router-outlet>
