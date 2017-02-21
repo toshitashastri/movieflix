@@ -12,4 +12,5 @@ public interface UserRepository {
 	public User update(User usr);
 	public void delete(User usr);
 	public User findByEmail(String email);
+	public User auth(String email,String password);
 }

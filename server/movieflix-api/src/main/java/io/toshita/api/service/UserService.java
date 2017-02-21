@@ -10,5 +10,7 @@ public interface UserService {
 	public User create(User usr);
 	public User update(String id, User usr);
 	public void delete(String id);
+	public User findByEmail(String email);
+	public Boolean auth(String email, String password);
 	
 }

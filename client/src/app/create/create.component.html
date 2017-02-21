@@ -1,0 +1,118 @@
+<div class="head">
+    <header>
+        <img src="../../logo.png">
+
+    </header>
+</div>
+<a [routerLink]="['../']" class="btn btn-primary" xmlns="http://www.w3.org/1999/html"
+   xmlns="http://www.w3.org/1999/html">&lt; Back</a>
+<h3 style="text-align: center; color: white;">Add a new entry for movie/series: </h3>
+<div class="createForm create">
+
+    <form novalidate #addForm>
+        <table class="tableform create">
+    <tr>
+        <td> Title:
+            <input class="form-control input-sm" name="title"  type="text" placeholder="Title" [(ngModel)]="movie.title" required minlength="4"/>
+        <td>Year:
+            <input class="form-control input-sm" name="year"  type="text" placeholder="Year" [(ngModel)]="movie.year" required minlength="4"/>
+        </td>
+        <td>Rated:
+            <input class="form-control input-sm" name="rated"  type="text" placeholder="Rated" [(ngModel)]="movie.rated" required minlength="4"/>
+        </td>
+
+    </tr>
+
+    <tr>
+        <td>Released:
+            <input class="form-control input-sm" name="released"  type="text" placeholder="Released" [(ngModel)]="movie.released" required minlength="4"/>
+        </td>
+        <td>
+            Runtime:
+            <input class="form-control input-sm" name="runtime"  type="text" placeholder="Runtime" [(ngModel)]="movie.runtime" required minlength="4"/>
+        </td>
+        <td>Genre:
+            <input class="form-control input-sm" name="genre"  type="text" placeholder="Genre" [(ngModel)]="movie.genre" required minlength="4"/>
+        </td>
+    </tr>
+            <tr>
+                <td>
+                    Director:
+                    <input class="form-control input-sm" name="director"  type="text" placeholder="Director" [(ngModel)]="movie.director" required minlength="4"/>
+
+                </td>
+                <td>
+                    Writer:
+                    <input class="form-control input-sm" name="writer"  type="text" placeholder="Writer" [(ngModel)]="movie.writer" required minlength="4"/>
+                </td>
+                <td>
+                    Actors:
+                    <textarea class="form-control input-sm" name="actors"  type="text" placeholder="Actors" [(ngModel)]="movie.actors" required minlength="4"></textarea>
+                </td>
+            </tr>
+            <tr>
+
+                <td>Plot:
+                    <textarea class="form-control" rows="3" name="plot"  placeholder="Plot" [(ngModel)]="movie.plot"></textarea>
+                </td>
+                <td>
+                    Language:
+                    <input class="form-control input-sm" name="language"  type="text" placeholder="Language" [(ngModel)]="movie.language" required minlength="4"/>
+
+                </td>
+                <td>
+                    Country:
+                    <input class="form-control input-sm" name="country"  type="text" placeholder="Country" [(ngModel)]="movie.country" required minlength="4"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Awards:
+                    <input class="form-control input-sm" name="awards"  type="text" placeholder="Awards" [(ngModel)]="movie.awards" required minlength="4"/>
+                </td>
+            <td>
+
+                Poster:
+                <input class="form-control input-sm" name="poster"  type="text" placeholder="Poster" [(ngModel)]="movie.poster" required minlength="4"/>
+            </td>
+                <td>
+                    MetaScore:
+                    <input class="form-control input-sm" name="metaScore"  type="text" placeholder="MetaScore" [(ngModel)]="movie.metaScore" required minlength="4"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                   ImdbRating:
+                    <input class="form-control input-sm" name="imdbRating"  type="text" placeholder="ImdbRating" [(ngModel)]="movie.imdbRating" required minlength="4"/>
+                </td>
+                <td>ImdbVotes:
+                    <input class="form-control input-sm" name="imdbVotes"  type="text" placeholder="ImdbVotes" [(ngModel)]="movie.imdbVotes" required minlength="4"/>
+                </td>
+                <td>ImdbId:
+                    <input class="form-control input-sm" name="imdbId"  type="text" placeholder="ImdbId" [(ngModel)]="movie.imdbId" required minlength="4"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Type(movie/series):
+                    <input class="form-control input-sm" name="type"  type="text" placeholder="Type" [(ngModel)]="movie.type" required >
+                </td>
+                <td>
+                    <button name="create" type="submit" class="btn btn-default" (click)="create(movie.title, movie.year, movie.rated, movie.release, movie.runtime, movie.genre, movie.director, movie.writer, movie.actors, movie.plot, movie.language, movie.country, movie.awards, movie.poster, movie.metaScore, movie.imdbRating, movie.imdbVotes, movie.imdbId, movie.type)">Create!</button>
+                    <p class="err_msg" *ngIf="valid">Success!</p>
+                </td>
+
+                <td>
+                    <button name="reset" type="submit" class="btn btn-default" (click)="reset()">Reset</button>
+                </td>
+            </tr>
+    </table>
+    </form>
+</div>
+<footer>
+    <p>
+        <a href="../contact">CONTACT US</a> &nbsp; | &nbsp; Privacy Statement &nbsp; | &nbsp; Copyright @ 2017 Toshita Shastri
+
+    </p>
+</footer>
+

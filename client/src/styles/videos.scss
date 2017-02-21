@@ -1,0 +1,127 @@
+nav{
+  display: block;
+  background-color: #333;
+  color: white;
+  padding: 5px ;
+  font-family: Arial, sans-serif;
+  line-height: 24px;
+  font-size: 11px;
+  text-transform: uppercase;
+
+}
+select{
+
+  color: inherit;
+  text-decoration-color: #2a323a;
+}
+.filter{
+  border: 1px solid #dedede;
+  height: 32px;
+  -moz-border-radius:5px;
+  -webkit-border-radius:5px;
+  border-radius:5px;
+  color:#3a3a3a;
+  background:#efefef;
+}
+.text{
+  height: 32px;
+  color: black;
+}
+
+.rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  text-align: left;
+}
+.rating > span {
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
+  font-size: x-large;
+  }
+.rating > span:hover,
+.rating > span:hover ~ span {
+  color: transparent;
+}
+.rating > span:hover:before,
+.rating > span:hover ~ span:before {
+  content: "\2605";
+  position: absolute;
+  left: 0;
+  color: gold;
+}
+
+table{
+  color: white;
+  font-family: 'Sansita', sans-serif;
+  font-size: large;
+}
+thead{
+  background-color: #333333;
+ }
+th, td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+  color: black
+}
+
+.details{
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 12px;
+  color: #666666;
+  line-height: 150%;
+  background-color: white;
+  height: 448px;
+  border-style: ridge;
+  margin: 10px;
+}
+.poster{
+  padding-left: 40px;
+  height: 100%;
+  display: flex;
+}
+.contactus{
+  color: white;
+  text-align: center;
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 14px;
+}
+.username{
+  float: right;
+  margin-right: 20px;
+  text-transform: none;
+  font-size: small;
+  display: flex;
+  display: block;
+}
+.reviews{
+  color: white;
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 14px;
+  margin: 15px;
+}
+.detailBox{
+margin: 15px;
+}
+.create{
+  //margin-left: 150px;
+  //margin-right: 150px;
+  margin-left: 10%;
+  margin-right:10%;
+  width: 80%;
+}
+.createForm{
+  //margin-top: 100px;
+  color: white;
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 14px;
+}
+.tableform{
+  background-color: white;
+  color: black;
+  border-radius: 5px;
+}

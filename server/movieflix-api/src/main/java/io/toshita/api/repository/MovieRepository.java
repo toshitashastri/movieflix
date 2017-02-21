@@ -9,12 +9,12 @@ public interface MovieRepository {
 	public  List<Movie> findByTypeMovie();
 	public  List<Movie> findByTypeSeries();
 	public  List<Movie> findByYear(String year);
-	public  List<Movie> findByGenre(String type, String genre);
+	public  List<Movie> findByGenre(String genre);
 	public Movie findOne(String id);
 	public Movie create(Movie mov);
 	public Movie update(Movie mov);
 	public void delete(Movie mov);
-	public Movie findByTitle(String title);
+	public List<Movie> findByTitle(String title);
 	public List<Movie> sortByImdbRating();
 	public  List<Movie> sortByYear();
 	public  List<Movie> sortByImdbVotes();

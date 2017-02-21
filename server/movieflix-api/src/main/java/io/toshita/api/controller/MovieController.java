@@ -3,6 +3,7 @@ package io.toshita.api.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import io.toshita.api.entity.Movie;
 import io.toshita.api.service.MovieService;
 
+@CrossOrigin("http://localhost:4000")
 @RestController
 @RequestMapping(value="movies")
 public class MovieController {
@@ -39,9 +41,9 @@ public class MovieController {
 		return service.findByYear(year);
 	}
 	
-	@RequestMapping(method = RequestMethod.GET, value = "{type}/findByGenre/{genre}")
-	public List<Movie> findByGenre(@PathVariable("type") String type, @PathVariable("genre") String genre){
-		return service.findByGenre(type, genre);
+	@RequestMapping(method = RequestMethod.GET, value = "findByGenre/{genre}")
+	public List<Movie> findByGenre(@PathVariable("genre") String genre){
+		return service.findByGenre(genre);
 	}
 	@RequestMapping(method = RequestMethod.GET, value = "/sortByImdbRating")
 	public List<Movie> sortByImdbRating() {
@@ -67,7 +69,7 @@ public class MovieController {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, value="movie/{title}")
-	public Movie findByTitle(@PathVariable("title") String title){
+	public List<Movie> findByTitle(@PathVariable("title") String title){
 		return service.findByTitle(title);
 	}
 	

@@ -8,8 +8,8 @@ public interface CommentRepository {
 	
 	public List<Comment> findAll();
 	
-	public Comment findOne(String id);
-		
+	public List<Comment> findById(String movId);
+	public Comment findOne(String id);		
 	public Comment create(Comment cmt);
 	
 	public void delete( Comment cmt);

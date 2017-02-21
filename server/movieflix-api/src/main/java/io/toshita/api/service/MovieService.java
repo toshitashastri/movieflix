@@ -11,7 +11,7 @@ public interface MovieService {
 	public List<Movie> findByTypeMovie();
 	public List<Movie> findByTypeSeries();
 	public List<Movie> findByYear( String year);
-	public List<Movie> findByGenre(String type, String genre);
+	public List<Movie> findByGenre( String genre);
 	public Movie findOne(String id);
 	public Movie create(Movie mov);
 	public Movie update(String id,Movie mov);
@@ -20,6 +20,6 @@ public interface MovieService {
 	public List<Movie> sortByYear();
 	public List<Movie> sortByImdbVotes();
 	public List<Movie> getTopRatedMovies(String type);
-	public Movie findByTitle(String title);
+	public List<Movie> findByTitle(String title);
 
 }

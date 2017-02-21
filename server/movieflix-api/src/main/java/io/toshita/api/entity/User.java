@@ -12,7 +12,8 @@ import javax.persistence.NamedQuery;
 @Entity
 @NamedQueries({
 	@NamedQuery(name="User.findAll", query="Select u from User u"),
-	@NamedQuery(name="User.findByEmail", query="Select u from User u where u.email= :pEmail")
+	@NamedQuery(name="User.findByEmail", query="Select u from User u where u.email= :pEmail"),
+	@NamedQuery(name="User.auth", query="Select u from User u where u.email= :pEmail and u.password= :pPassword")
 })
 public class User {
 

@@ -4,6 +4,7 @@ package io.toshita.api.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import io.toshita.api.entity.User;
 import io.toshita.api.service.UserService;
 
+@CrossOrigin("http://localhost:4000")
 @RestController
 @RequestMapping(value="users")
 public class UserController {
@@ -30,9 +32,9 @@ public class UserController {
 		return service.findOne(id);
 	}
 	
-	@RequestMapping(method = RequestMethod.GET, value = "findByEmail/{email}")
+	@RequestMapping(method = RequestMethod.GET, value = "{email}/findByEmail")
 	public User findByEmail(@PathVariable("email") String email){
-		return service.findOne(email);
+		return service.findByEmail(email);
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
@@ -48,6 +50,12 @@ public class UserController {
 	@RequestMapping(method = RequestMethod.DELETE, value = "/{id}")
 	public void delete(@PathVariable("id") String id){
 		service.delete(id);
+	}
+	
+	@RequestMapping(method = RequestMethod.GET,path={"/{email}/{password}"})
+	public Boolean auth(@PathVariable("email") String email, @PathVariable("password") String password) {
+		
+    	return service.auth(email, password);
 	}
 
 }
